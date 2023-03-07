@@ -1,0 +1,80 @@
+<mujoco>
+    <asset>
+        <!-- <texture type="skybox" builtin="gradient" rgb1="0.44 0.85 0.56" rgb2="0.46 0.87 0.58" width="32" height="32"></texture>
+        <texture name="texture_block" file="block.png" gridsize="3 4" gridlayout=".U..LFRB.D.."></texture> -->
+
+        <!-- <material name="robot0:geomMat" shininess="0.03" specular="0.4"></material>
+        <material name="robot0:gripper_finger_mat" shininess="0.03" specular="0.4" reflectance="0"></material>
+        <material name="robot0:gripper_mat" shininess="0.03" specular="0.4" reflectance="0"></material>
+        <material name="robot0:arm_mat" shininess="0.03" specular="0.4" reflectance="0"></material>
+        <material name="robot0:head_mat" shininess="0.03" specular="0.4" reflectance="0"></material>
+        <material name="robot0:torso_mat" shininess="0.03" specular="0.4" reflectance="0"></material>
+        <material name="robot0:base_mat" shininess="0.03" specular="0.4" reflectance="0"></material>
+         -->
+        
+        <mesh name="base_link_collision" file="../../fetch_assets/meshes/base_link_collision.STL"/>
+        <mesh name="r_wheel_link_collision" file="../../fetch_assets/meshes/r_wheel_link_collision.STL"/>
+        <mesh name="l_wheel_link_collision" file="../../fetch_assets/meshes/l_wheel_link_collision.STL"/>
+        <mesh name="torso_lift_link_collision" file="../../fetch_assets/meshes/torso_lift_link_collision.STL"/>
+        <mesh name="head_pan_link_collision" file="../../fetch_assets/meshes/head_pan_link_collision.STL"/>
+        <mesh name="head_tilt_link_collision" file="../../fetch_assets/meshes/head_tilt_link_collision.STL"/>
+        <mesh name="shoulder_pan_link_collision" file="../../fetch_assets/meshes/shoulder_pan_link_collision.STL"/>
+        <mesh name="shoulder_lift_link_collision" file="../../fetch_assets/meshes/shoulder_lift_link_collision.STL"/>
+        <mesh name="upperarm_roll_link_collision" file="../../fetch_assets/meshes/upperarm_roll_link_collision.STL"/>
+        <mesh name="elbow_flex_link_collision" file="../../fetch_assets/meshes/elbow_flex_link_collision.STL"/>
+        <mesh name="forearm_roll_link_collision" file="../../fetch_assets/meshes/forearm_roll_link_collision.STL"/>
+        <mesh name="wrist_flex_link_collision" file="../../fetch_assets/meshes/wrist_flex_link_collision.STL"/>
+        <mesh name="wrist_roll_link_collision" file="../../fetch_assets/meshes/wrist_roll_link_collision.STL"/>
+        <mesh name="gripper_link" file="../../fetch_assets/meshes/gripper_link.STL"/>
+        <mesh name="r_gripper_finger_link" file="../../fetch_assets/meshes/r_gripper_finger_link.STL"/>
+        <mesh name="l_gripper_finger_link" file="../../fetch_assets/meshes/l_gripper_finger_link.STL"/>
+        <mesh name="bellows_link_collision" file="../../fetch_assets/meshes/bellows_link_collision.STL"/>
+        <mesh name="estop_link" file="../../fetch_assets/meshes/estop_link.STL"/>
+        <mesh name="laser_link" file="../../fetch_assets/meshes/laser_link.STL"/>
+        <mesh name="torso_fixed_link" file="../../fetch_assets/meshes/torso_fixed_link.STL"/>
+
+    </asset>
+
+    <!-- <equality>
+        <weld body1="robot0:mocap" body2="robot0:gripper_link" solimp="0.9 0.95 0.001" solref="0.02 1"></weld>
+    </equality> -->
+    
+    <!-- <contact>
+        <exclude body1="robot0:r_gripper_finger_link" body2="robot0:l_gripper_finger_link"></exclude>
+        <exclude body1="robot0:torso_lift_link" body2="robot0:torso_fixed_link"></exclude>
+        <exclude body1="robot0:torso_lift_link" body2="robot0:shoulder_pan_link"></exclude>
+    </contact> -->
+    
+  <default>
+    <default class="fetch">
+      <material specular="0.5" shininess="0.25"/>
+      <joint armature="0.1" damping="1" axis="0 0 1" range="-2.8973 2.8973"/>
+      <general dyntype="none" biastype="affine" ctrlrange="-2.8973 2.8973" forcerange="-87 87"/>
+      <default class="finger">
+        <joint axis="0 1 0" type="slide" range="0 0.04"/>
+      </default>
+
+      <default class="visual">
+        <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+      </default>
+      <default class="collision">
+        <geom type="mesh" group="3"/>
+        <default class="fingertip_pad_collision_1">
+          <geom type="box" size="0.0085 0.004 0.0085" pos="0 0.0055 0.0445"/>
+        </default>
+        <default class="fingertip_pad_collision_2">
+          <geom type="box" size="0.003 0.002 0.003" pos="0.0055 0.002 0.05"/>
+        </default>
+        <default class="fingertip_pad_collision_3">
+          <geom type="box" size="0.003 0.002 0.003" pos="-0.0055 0.002 0.05"/>
+        </default>
+        <default class="fingertip_pad_collision_4">
+          <geom type="box" size="0.003 0.002 0.0035" pos="0.0055 0.002 0.0395"/>
+        </default>
+        <default class="fingertip_pad_collision_5">
+          <geom type="box" size="0.003 0.002 0.0035" pos="-0.0055 0.002 0.0395"/>
+        </default>
+      </default>
+    </default>
+  </default>
+</mujoco>

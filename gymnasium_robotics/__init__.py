@@ -1102,6 +1102,11 @@ def register_robotics_envs():
         entry_point="gymnasium_robotics.envs.franka_kitchen:KitchenEnv",
         max_episode_steps=280,
     )
+    register(
+        id="FetchKitchen-v1",
+        entry_point="gymnasium_robotics.envs.fetch_kitchen:KitchenEnv",
+        max_episode_steps=280,
+    )
 
 
 __version__ = "1.2.1"
